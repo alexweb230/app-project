@@ -1,19 +1,21 @@
-import { SecondService } from './second.service';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { testArray_2, User } from './models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor(private secondService: SecondService) { }
+  items = testArray_2
 
-  sum(a: number, b: number){
-    const res = a + b;
-    return res;
+  constructor() { }
+
+
+  getData(): Observable<User[]> {
+    const res = of(this.items);
+    return res
   }
 
-  check(): boolean {
-   return this.secondService.check();
-  }
+
 }
